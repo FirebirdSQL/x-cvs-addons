@@ -32,6 +32,8 @@
  *       Application Icon and End look;
  *    Thomas Steinmaurer <ts@iblogmanager.com>
  *       German Translation;
+ *    Dmitry Yemanov <yemanov@yandex.ru>
+ *       Russian Translation;
  *    Thanks to Helen Borrie for adding the "legal part"
  *
  ********************* *)
@@ -71,6 +73,7 @@ Have Fun!
 //{$DEFINE VERSAO_PORTUGUESA}
 //{$DEFINE CFLP}  // This is a Specific Version for CFLP
 //{$DEFINE GERMAN_VERSION}
+//{$DEFINE RUSSIAN_VERSION}
 {$DEFINE ENGLISH_VERSION}
 
 {$IFDEF CFLP}
@@ -332,6 +335,36 @@ resourcestring
  {$ENDIF}
 
 
+{$IFDEF RUSSIAN_VERSION}
+  FB_Title        = 'Firebird Manager';
+  FB_Visit        = 'Посетите';
+  FB_URL          = 'http://www.firebirdsql.org';
+
+  FB_LabStartMode = 'Р&ежим запуска';
+  FB_LabStartModeA= '&Автоматический';
+  FB_LabStartModeM= '&Ручной';
+
+  FB_LabRootDir   = '&Корневая папка установки';
+
+  FB_LabStatus    = 'Сос&тояние';
+  FB_LabStatusS   = 'Firebird Server сейчас';
+
+  FB_LabStatusS_SR= 'Запущен';
+  FB_LabStatusS_SS= 'Остановлен';
+
+  FB_LabStatusB_SS= '&Остановить';
+  FB_LabStatusB_SR= '&Запустить';
+
+  FB_LabVersion   = 'Версия';
+
+  FB_LabStatusServ= 'Работать как &сервис на NT/W2K/XP';
+  FB_LabStatusGuar= '&Использовать Guardian';
+  FB_LabStatusGOpt= '&Перезапускать Firebird';
+  FB_NotInstalled = 'Firebird Server не установлен на вашем компьютере!';
+
+  FB_Apply        = 'Применить';
+  FB_Reboot       = 'Автоматическая перезагрузка';
+{$ENDIF}
 
 
 // Funcгo Auxiliar para trabalhar com Serviзos
@@ -816,7 +849,7 @@ begin
   if not FB_Serv then
     begin
     WHand := FindWindow(KCName,KWName);
-    if PostMessage( WHand, WM_CLOSE, 0, 0)<> Null then
+    if PostMessage( WHand, WM_CLOSE, 0, 0) then
       Result := True;
     Application.ProcessMessages;
     end

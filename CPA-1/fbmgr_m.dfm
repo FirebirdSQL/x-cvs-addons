@@ -68,14 +68,14 @@ object FoMain: TFoMain
     object RBSMAuto: TRadioButton
       Left = 8
       Top = 23
-      Width = 89
+      Width = 105
       Height = 17
       Caption = 'Automatic'
       TabOrder = 0
       OnClick = ChangeStartUp
     end
     object RBSMMan: TRadioButton
-      Left = 108
+      Left = 124
       Top = 23
       Width = 68
       Height = 17
