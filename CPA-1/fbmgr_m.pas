@@ -36,6 +36,13 @@
  *       Greek Translation;
  *    Philippe Makowski <makowski@firebird-fr.eu.org>
  *       French Translation;
+ *    Pirtea Calin <pcalin@rdsor.ro>
+ *       Romanian Translation;
+ *    Çaðatay Tengiz <c.tengiz@etapholding.com>
+ *       Turkish Translation;
+ *    Ricardo Muñoz V. <rmunoz@enfasis.cl>
+ *       Spanish Version;
+ *
  *
  *    Thanks to Helen Borrie for adding the "legal part"
  *
@@ -73,7 +80,7 @@ Have Fun!
 // Tire o comentário do que quiser utilizar
 // Comment out the one you want to use
 
-{$DEFINE ENGLISH_VERSION}
+//{$DEFINE ENGLISH_VERSION}
 
 //{$DEFINE VERSAO_PORTUGUESA}
 //{$DEFINE CFLP}  // This is a Specific Version for CFLP
@@ -81,6 +88,9 @@ Have Fun!
 //{$DEFINE GREEK_VERSION}
 //{$DEFINE FRENCH_VERSION}
 //{$DEFINE RUSSIAN_VERSION}
+{$DEFINE ROMANIAN_VERSION}
+//{$DEFINE TURKISH_VERSION}
+//{$DEFINE SPANISH_VERSION}
 
 {$IFDEF CFLP}
   {$IFNDEF VERSAO_PORTUGUESA }
@@ -236,6 +246,9 @@ const
 
 resourcestring
 
+//*********************************************************
+// Localize it
+//*********************************************************
 
 {$IFDEF ENGLISH_VERSION}
   FB_Title        = 'Firebird Manager';
@@ -433,6 +446,107 @@ resourcestring
   FB_Apply        = 'Ïðèìåíèòü';
   FB_Reboot       = 'Àâòîìàòè÷åñêàÿ ïåðåçàãðóçêà';
 {$ENDIF}
+
+{$IFDEF ROMANIAN_VERSION}
+  FB_Title        = 'Firebird Manager';
+  FB_Visit        = 'Visitati';
+  FB_URL          = 'http://www.firebirdsql.org';
+
+  FB_LabStartMode = 'Modul de &pornire';
+  FB_LabStartModeA= '&Automat';
+  FB_LabStartModeM= '&Manual';
+
+  FB_LabRootDir   = '&Calea de pornire';
+
+  FB_LabStatus    = 'S&tare';
+  FB_LabStatusS   = 'Serverul Firebird este';
+
+  FB_LabStatusS_SR= 'Pornit';
+  FB_LabStatusS_SS= 'Oprit';
+
+  FB_LabStatusB_SS= '&Opreste';
+  FB_LabStatusB_SR= '&Porneste';
+
+  FB_LabVersion   = 'Versiune';
+
+  FB_LabStatusServ= '&Porneste ca serviciu pe NT/W2K/XP';
+  FB_LabStatusGuar= '&Foloseste Guardian';
+  FB_LabStatusGOpt= '&Reporneste Firebird la nevoie';
+  FB_NotInstalled = 'Serverul Firebird nu este instalat pe acest calculator!';
+
+  FB_Apply        = 'Salveaza';
+  FB_Reboot       = 'Reporneste automat';
+{$ENDIF}
+
+{$IFDEF TURKISH_VERSION}
+  FB_Title        = 'Firebird Yöneticisi';
+  FB_Visit        = 'Gözatýn';
+  FB_URL          = 'http://www.firebirdsql.org';
+
+  FB_LabStartMode = 'Baþlatma &Yöntemi';
+  FB_LabStartModeA= '&Otomatik';
+  FB_LabStartModeM= '&Manual';
+
+  FB_LabRootDir   = 'Kök &Dizin';
+
+  FB_LabStatus    = 'D&urum';
+  FB_LabStatusS   = 'Firebird sunucusu þu anda';
+
+  FB_LabStatusS_SR= 'Çalýþýyor';
+  FB_LabStatusS_SS= 'Çalýþmýyor';
+
+  FB_LabStatusB_SS= '&Baþlat';
+  FB_LabStatusB_SR= 'Du&rdur';
+
+  FB_LabVersion   = 'Sürüm';
+
+  FB_LabStatusServ= 'NT/W2K/XP''de &servis olarak çalýþtýr';
+  FB_LabStatusGuar= '&Guardian''ý kullan';
+  FB_LabStatusGOpt= '&Firebird''ü sürekli yeniden baþlat';
+  FB_NotInstalled = 'Firebird Sunucusu kurulu deðil!';
+
+  FB_Apply        = 'Uy&gula';
+  FB_Reboot       = 'Otomatik Yeniden Baþlat';
+{$ENDIF}
+
+
+{$IFDEF SPANISH_VERSION}
+  FB_Title        = 'Administrador Firebird';
+  FB_Visit        = 'Visite';
+  FB_URL          = 'http://www.firebirdsql.org';
+
+  FB_LabStartMode = '&Modo de Inicio';
+  FB_LabStartModeA= '&Automático';
+  FB_LabStartModeM= 'Ma&nual';
+
+  FB_LabRootDir   = 'Di&rectorio Raíz';
+
+  FB_LabStatus    = '&Estado';
+  FB_LabStatusS   = 'Firebird está actualmente';
+
+  FB_LabStatusS_SR= 'Ejecutando';
+  FB_LabStatusS_SS= 'Detenido';
+
+  FB_LabStatusB_SS= '&Detener';
+  FB_LabStatusB_SR= '&Iniciar';
+
+  FB_LabVersion   = 'Versión';
+
+  FB_LabStatusServ= 'E&jecutar como servicio en NT/W2K/XP';
+  FB_LabStatusGuar= '&Usar Guardián';
+  FB_LabStatusGOpt= 'Man&tener Reiniciando Firebird';
+  FB_NotInstalled = 'Servidor Firebird no está instalado en su computador!';
+
+  FB_Apply        = 'Aplicar';
+  FB_Reboot       = 'Reinicio Automático';
+{$ENDIF}
+
+
+
+
+
+// ******************************************************
+
 
 // Funcão Auxiliar para trabalhar com Serviços
 // Auxiliary Function to Work with services
