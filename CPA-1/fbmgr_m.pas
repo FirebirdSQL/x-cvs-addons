@@ -80,6 +80,7 @@ Have Fun!
 //{$DEFINE GERMAN_VERSION}
 //{$DEFINE GREEK_VERSION}
 //{$DEFINE FRENCH_VERSION}
+//{$DEFINE RUSSIAN_VERSION}
 
 {$IFDEF CFLP}
   {$IFNDEF VERSAO_PORTUGUESA }
@@ -402,6 +403,36 @@ resourcestring
   FB_Reboot       = 'Reboot Automatique';
 {$ENDIF}
 
+{$IFDEF RUSSIAN_VERSION}
+  FB_Title        = 'Firebird Manager';
+  FB_Visit        = 'Посетите';
+  FB_URL          = 'http://www.firebirdsql.org';
+
+  FB_LabStartMode = 'Р&ежим запуска';
+  FB_LabStartModeA= '&Автоматический';
+  FB_LabStartModeM= '&Ручной';
+
+  FB_LabRootDir   = '&Корневая папка установки';
+
+  FB_LabStatus    = 'Сос&тояние';
+  FB_LabStatusS   = 'Firebird Server сейчас';
+
+  FB_LabStatusS_SR= 'Запущен';
+  FB_LabStatusS_SS= 'Остановлен';
+
+  FB_LabStatusB_SS= '&Остановить';
+  FB_LabStatusB_SR= '&Запустить';
+
+  FB_LabVersion   = 'Версия';
+
+  FB_LabStatusServ= 'Работать как &сервис на NT/W2K/XP';
+  FB_LabStatusGuar= '&Использовать Guardian';
+  FB_LabStatusGOpt= '&Перезапускать Firebird';
+  FB_NotInstalled = 'Firebird Server не установлен на вашем компьютере!';
+
+  FB_Apply        = 'Применить';
+  FB_Reboot       = 'Автоматическая перезагрузка';
+{$ENDIF}
 
 // Funcгo Auxiliar para trabalhar com Serviзos
 // Auxiliary Function to Work with services
@@ -885,7 +916,7 @@ begin
   if not FB_Serv then
     begin
     WHand := FindWindow(KCName,KWName);
-    if PostMessage( WHand, WM_CLOSE, 0, 0)<> Null then
+    if PostMessage( WHand, WM_CLOSE, 0, 0) then
       Result := True;
     Application.ProcessMessages;
     end
