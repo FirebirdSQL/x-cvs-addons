@@ -63,6 +63,11 @@ var
 
    FirebirdConf_Items: TStringList; // This will be the container of firebird.conf
 
+   // File Version Info Variables
+   FileInfo, Text_value:pointer;
+   InfoSize, ZeroResult:DWord;
+   TextLen:Uint;
+
 Const
   FBRegKey = 'Software\FirebirdSQL\Firebird\CurrentVersion';
   FB_ItemCount = 36;
@@ -109,8 +114,20 @@ Const
 
 procedure Load_Firebird_conf;
 procedure Load_Comment(ItemList: TStrings; Item: String);
+function GetFileVersionValue(FileInfoResource:String):String;
 
 implementation
+
+
+// Getting File Version from Resource File
+function GetFileVersionValue;
+begin
+  if Assigned(FileInfo) and VerQueryValue(FileInfo,PChar('\StringFileInfo\081604E4\'+FileInfoResource),
+    Text_value,TextLen) then
+  begin
+    Result:=String(PChar(Text_value));
+  end;
+end;
 
 procedure Load_Comment(ItemList: TStrings; Item: String);
 var
@@ -228,10 +245,16 @@ initialization
     exit;
     end;
 
+  // File Version Stuff
+  InfoSize:=GetFileVersionInfoSize(PChar(ParamStr(0)), ZeroResult);
+  getmem(FileInfo, InfoSize);
+  GetFileVersionInfo(PChar(ParamStr(0)), 0, InfoSize, FileInfo);
+
   // We've completed all startup operation, so we may proceed.
   StartupCompleted:=True;
 
 finalization
+  freemem(FileInfo);
   // It seems that Delphi is taking good care of releasing all objects without
   // my intervention
 end.
