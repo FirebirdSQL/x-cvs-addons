@@ -1,0 +1,76 @@
+2003-04-21  arturanjos
+	* CPA-1/fbmgr_m.pas:
+		Japanese Version
+		Changes in Slovenian Translation
+
+2003-04-09  arturanjos
+	* FbConfManager/MainU.pas:
+		Removed the Version Info const
+
+	* FbConfManager/FbConfigManager.res:
+		Version Info Added
+
+	* FbConfManager/firebird_conf.pas:
+		Changes to get version info directly from the resource file
+
+	* FbConfManager/MainU.dfm:
+		Some changes in the form, related to version info
+
+2003-04-08  arturanjos
+	* FbConfManager/FBConfManager.lang:
+	* FbConfManager/FbConfigManager.dpr:
+	* FbConfManager/FbConfigManager.res:
+	* FbConfManager/MainU.dfm:
+	* FbConfManager/MainU.pas:
+	* FbConfManager/firebird_conf.pas:
+	* FbConfManager/readme.txt:
+	* FbConfManager/version_info.txt:
+		Firebird Config File Manager
+		Win32 utility to manage the firebird.conf file
+
+2003-03-15  arturanjos
+	* CPA-1/fbmgr_m.pas:
+		More localizations:
+		 Robbert-Jan Mittendorff - Dutch Version;
+		 Marko Trstenjak - Slovenian Version;
+		 Marco Kregar - Italian Version
+
+2003-03-14  arturanjos
+	* CPA-1/fbmgr_m.pas:
+		New Localizations:
+		Pirtea Calin: Romanian Translation;
+		Çaðatay Tengiz:  Turkish Translation;
+		Ricardo Muñoz V.: Spanish Version;
+
+2003-03-04  arturanjos
+	* CPA-1/fbmgr_m.pas:
+		Added Russian Translation (by Dmitry Yemanov)
+
+2003-01-29  arturanjos
+	* CPA-1/fbmgr_m.pas:
+		Contributions:
+		 *    Thomas Steinmaurer <ts@iblogmanager.com>
+		 *       German Translation;
+		 *    Giannis Tsopokis <ogiannhs@yahoo.gr>
+		 *       Greek Translation;
+		 *    Philippe Makowski <makowski@firebird-fr.eu.org>
+		 *       French Translation;
+
+2003-01-29  dimitr
+	* CPA-1/fbmgr_m.dfm:
+	* CPA-1/fbmgr_m.pas:
+		Russian translation and a couple of small corrections.
+
+2002-11-15  pcisar
+	* CPA-1/fbmgr.dpr:
+	* CPA-1/fbmgr.ico:
+	* CPA-1/fbmgr.res:
+	* CPA-1/fbmgr_m.dfm:
+	* CPA-1/fbmgr_m.pas:
+	* CPA-1/fbmgrcp.dfm:
+	* CPA-1/fbmgrcp.pas:
+	* CPA-1/fbmgrcpa.dpr:
+	* CPA-1/fbmgrcpa.res:
+		Creation of generall add-ons module and primary import of
+		Windows Control Panel Applet for Firebird 1.0
+
