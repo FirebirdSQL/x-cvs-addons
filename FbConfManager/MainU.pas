@@ -91,13 +91,6 @@ type
 var
   MainForm: TMainForm;
 
-const
-  // If you are going to update this,
-  // please update version_info.txt as well
-  // dpcumenting the changes
-  VersionInfo : string = 'Version 1.00';
-
-
 implementation
 
 {$R *.DFM}
@@ -143,7 +136,7 @@ var
   i : integer;
 begin
   // Showing Version Info and Path to firebird.conf
-  LbVersion.Caption  := VersionInfo;
+  LbVersion.Caption  := 'Version: '+GetFileVersionValue('ProductVersion');
   LbConfFile.Caption := Firebird_Conf_File;
   BReadConfigClick(BReadConfig);
   for i:=0 to Languages.Count-1 do
