@@ -42,7 +42,12 @@
  *       Turkish Translation;
  *    Ricardo Muñoz V. <rmunoz@enfasis.cl>
  *       Spanish Version;
- *
+ *    Robbert-Jan Mittendorff <rjm@xs4all.nl>
+ *       Dutch Version;
+ *    Marko Trstenjak <trstenjak@volja.net>
+ *       Slovenian Version;
+ *    Marco Kregar <mkregar@esys.it>
+ *       Italian Version
  *
  *    Thanks to Helen Borrie for adding the "legal part"
  *
@@ -80,7 +85,7 @@ Have Fun!
 // Tire o comentário do que quiser utilizar
 // Comment out the one you want to use
 
-//{$DEFINE ENGLISH_VERSION}
+{$DEFINE ENGLISH_VERSION}
 
 //{$DEFINE VERSAO_PORTUGUESA}
 //{$DEFINE CFLP}  // This is a Specific Version for CFLP
@@ -88,9 +93,12 @@ Have Fun!
 //{$DEFINE GREEK_VERSION}
 //{$DEFINE FRENCH_VERSION}
 //{$DEFINE RUSSIAN_VERSION}
-{$DEFINE ROMANIAN_VERSION}
+//{$DEFINE ROMANIAN_VERSION}
 //{$DEFINE TURKISH_VERSION}
 //{$DEFINE SPANISH_VERSION}
+//{$DEFINE DUTCH_VERSION}
+//{$DEFINE SLOVENIAN_VERSION}
+//{$DEFINE ITALIAN_VERSION}
 
 {$IFDEF CFLP}
   {$IFNDEF VERSAO_PORTUGUESA }
@@ -541,8 +549,101 @@ resourcestring
   FB_Reboot       = 'Reinicio Automático';
 {$ENDIF}
 
+{$IFDEF DUTCH_VERSION}
+  FB_Title        = 'Firebird Manager';
+  FB_Visit        = 'Bezoek';
+  FB_URL          = 'http://www.firebirdsql.org';
+
+  FB_LabStartMode = 'Opstartwijze';
+  FB_LabStartModeA= '&Automatisch';
+  FB_LabStartModeM= '&Handmatig';
+
+  FB_LabRootDir   = 'Hoofddirectorie';
+
+  FB_LabStatus    = 'Status';
+  FB_LabStatusS   = 'De Firebird Server is momenteel';
+
+  FB_LabStatusS_SR= 'gestart';
+  FB_LabStatusS_SS= 'gestopt';
+
+  FB_LabStatusB_SS= '&Stop';
+  FB_LabStatusB_SR= '&Start';
+
+  FB_LabVersion   = 'Versie';
+
+  FB_LabStatusServ= '&Als service uitvoeren op NT/W2K/XP';
+  FB_LabStatusGuar= '&Guardian gebruiken';
+  FB_LabStatusGOpt= '&Firebird steeds opnieuw opstarten';
+  FB_NotInstalled = 'Firebird Server is niet geïnstalleerd op uw computer!';
+
+  FB_Apply        = '&Toepassen';
+  FB_Reboot       = 'Automatisch de computer opnieuw &opstarten';
+{$ENDIF}
 
 
+{$IFDEF SLOVENIAN_VERSION}
+   FB_Title        = 'Firebird upravitelj';
+   FB_Visit        = 'Obisci';
+   FB_URL          = 'http://www.firebirdsql.org';
+
+   FB_LabStartMode = 'Nacin zagona';
+   FB_LabStartModeA= 'Samodejno';
+
+   FB_LabStartModeM= 'Rocno';
+   FB_LabRootDir   = 'Imenik instalacije';
+
+   FB_LabStatus    = 'Stanje';
+   FB_LabStatusS   = 'Trenutno stanje Firebird serverja';
+
+   FB_LabStatusS_SR= 'Aktiven';
+   FB_LabStatusS_SS= 'Zaustavljen';
+
+   FB_LabStatusB_SS= 'Ustavi';
+   FB_LabStatusB_SR= 'Zazeni';
+
+   FB_LabVersion   = 'Verzija';
+
+   FB_LabStatusServ= 'Zazeni kot servis NT/W2K/XP';
+   FB_LabStatusGuar= 'Uporabi Guardian';
+
+   FB_LabStatusGOpt= 'Ohrani ponovni zagon Firebird Serverja';
+
+   FB_NotInstalled = 'Ne najdem instalacije Firebird Serverja!';
+
+   FB_Apply        = 'Uporabi';
+   FB_Reboot       = 'Samodejni ponovni zagon';
+{$ENDIF}
+
+{$IFDEF ITALIAN_VERSION}
+  FB_Title        = 'Firebird Manager';
+  FB_Visit        = 'Visita';
+  FB_URL          = 'http://www.firebirdsql.org';
+
+  FB_LabStartMode = '&Modalità avvio';
+  FB_LabStartModeA= '&Automatico';
+  FB_LabStartModeM= '&Manuale';
+
+  FB_LabRootDir   = '&Directory radice';
+
+  FB_LabStatus    = 'S&tatus';
+  FB_LabStatusS   = 'Firebird Server è attualmente';
+
+  FB_LabStatusS_SR= 'Attivato';
+  FB_LabStatusS_SS= 'Disattivato';
+
+  FB_LabStatusB_SS= '&Disattiva';
+  FB_LabStatusB_SR= '&Attiva';
+
+  FB_LabVersion   = 'Versione';
+
+  FB_LabStatusServ= '&Esegui come servizio in NT/W2K/XP';
+  FB_LabStatusGuar= '&Usa il Guardian';
+  FB_LabStatusGOpt= '&Mantieni attivo il server';
+  FB_NotInstalled = 'Firebird Server non risulta installato!';
+
+  FB_Apply        = 'Applica';
+  FB_Reboot       = 'Riavvio Automatico';
+{$ENDIF}
 
 
 // ******************************************************
