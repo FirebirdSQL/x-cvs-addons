@@ -20,7 +20,7 @@
  * 
  * This module was created by members of the Firebird development 
  * team.  All individual contributions remain the Copyright (C) of 
- * those individuals and all rights are reserved.  Contributors to 
+ * those individuals and all rights are reserved.  Contributors to
  * this file are either listed below or can be obtained from a CVS
  * history command.
  *
@@ -32,8 +32,11 @@
  *       Application Icon and End look;
  *    Thomas Steinmaurer <ts@iblogmanager.com>
  *       German Translation;
- *    Dmitry Yemanov <yemanov@yandex.ru>
- *       Russian Translation;
+ *    Giannis Tsopokis <ogiannhs@yahoo.gr>
+ *       Greek Translation;
+ *    Philippe Makowski <makowski@firebird-fr.eu.org>
+ *       French Translation;
+ *
  *    Thanks to Helen Borrie for adding the "legal part"
  *
  ********************* *)
@@ -70,11 +73,13 @@ Have Fun!
 // Tire o comentαrio do que quiser utilizar
 // Comment out the one you want to use
 
+{$DEFINE ENGLISH_VERSION}
+
 //{$DEFINE VERSAO_PORTUGUESA}
 //{$DEFINE CFLP}  // This is a Specific Version for CFLP
 //{$DEFINE GERMAN_VERSION}
-//{$DEFINE RUSSIAN_VERSION}
-{$DEFINE ENGLISH_VERSION}
+//{$DEFINE GREEK_VERSION}
+//{$DEFINE FRENCH_VERSION}
 
 {$IFDEF CFLP}
   {$IFNDEF VERSAO_PORTUGUESA }
@@ -335,35 +340,66 @@ resourcestring
  {$ENDIF}
 
 
-{$IFDEF RUSSIAN_VERSION}
-  FB_Title        = 'Firebird Manager';
-  FB_Visit        = 'Οξρεςθςε';
+{$IFDEF GREEK_VERSION}
+  FB_Title        = 'Διαχείριση Firebird';
+  FB_Visit        = 'Επισκεφθείτε';
   FB_URL          = 'http://www.firebirdsql.org';
 
-  FB_LabStartMode = 'Π&εζθμ ηΰοσρκΰ';
-  FB_LabStartModeA= '&ΐβςξμΰςθχερκθι';
-  FB_LabStartModeM= '&Πσχνξι';
+  FB_LabStartMode = '&Τρόπος Eκκίνησης';
+  FB_LabStartModeA= '&Aυτόματος';
+  FB_LabStartModeM= '&Xειροκίνητος';
 
-  FB_LabRootDir   = '&Κξπνεβΰÿ οΰοκΰ σρςΰνξβκθ';
+  FB_LabRootDir   = '&Bασικός Κατάλογος';
 
-  FB_LabStatus    = 'Ρξρ&ςξÿνθε';
-  FB_LabStatusS   = 'Firebird Server ρειχΰρ';
+  FB_LabStatus    = '&Kατάσταση';
+  FB_LabStatusS   = 'Η υπηρεσία Firebird';
 
-  FB_LabStatusS_SR= 'Ηΰοσωεν';
-  FB_LabStatusS_SS= 'Ξρςΰνξβλεν';
+  FB_LabStatusS_SR= 'Τρέχει';
+  FB_LabStatusS_SS= 'Έχει σταματήσει';
 
-  FB_LabStatusB_SS= '&Ξρςΰνξβθςό';
-  FB_LabStatusB_SR= '&Ηΰοσρςθςό';
+  FB_LabStatusB_SS= 'Παύση';
+  FB_LabStatusB_SR= 'Εκκίνηση';
 
-  FB_LabVersion   = 'Βεπρθÿ';
+  FB_LabVersion   = 'Έκδοση';
 
-  FB_LabStatusServ= 'Πΰαξςΰςό κΰκ &ρεπβθρ νΰ NT/W2K/XP';
-  FB_LabStatusGuar= '&Θροξλόηξβΰςό Guardian';
-  FB_LabStatusGOpt= '&Οεπεηΰοσρκΰςό Firebird';
-  FB_NotInstalled = 'Firebird Server νε σρςΰνξβλεν νΰ βΰψεμ κξμοόώςεπε!';
+  FB_LabStatusServ= 'Τρέχει ως υπηρεσία στα NT/W2K/XP';
+  FB_LabStatusGuar= 'Χρήση του Guardian';
+  FB_LabStatusGOpt= 'Συνεχής Επανεκκίνηση της Firebird';
+  FB_NotInstalled = 'Η υπηρεσία Firebird δεν είναι εγκατεστημένη στον υπολογιστή σας!';
 
-  FB_Apply        = 'Οπθμενθςό';
-  FB_Reboot       = 'ΐβςξμΰςθχερκΰÿ οεπεηΰγπσηκΰ';
+  FB_Apply        = 'Καταχώρηση';
+  FB_Reboot       = 'Αυτόματη Επανεκκίνηση';
+{$ENDIF}
+
+{$IFDEF FRENCH_VERSION}
+  FB_Title        = 'Administrateur Services Firebird';
+  FB_Visit        = 'Visiter';
+  FB_URL          = 'http://www.firebirdsql.org';
+
+  FB_LabStartMode = '&Mode de dιmarage';
+  FB_LabStartModeA= '&Automatique';
+  FB_LabStartModeM= '&Manuel';
+
+  FB_LabRootDir   = '&Rιpertoire racine';
+
+  FB_LabStatus    = 'S&tatut';
+  FB_LabStatusS   = 'Le serveur Firebird est ';
+
+  FB_LabStatusS_SR= 'en service';
+  FB_LabStatusS_SS= 'arrκtι';
+
+  FB_LabStatusB_SS= '&Arrκter';
+  FB_LabStatusB_SR= '&Dιmarrer';
+
+  FB_LabVersion   = 'Version';
+
+  FB_LabStatusServ= '&Executer en tant que service NT/W2K/XP';
+  FB_LabStatusGuar= '&Utiliser Guardian';
+  FB_LabStatusGOpt= '&Redιmarrer Firebird';
+  FB_NotInstalled = 'Le Serveur Firebird Server n''est pas installι!';
+
+  FB_Apply        = 'Appliquer';
+  FB_Reboot       = 'Reboot Automatique';
 {$ENDIF}
 
 
@@ -849,7 +885,7 @@ begin
   if not FB_Serv then
     begin
     WHand := FindWindow(KCName,KWName);
-    if PostMessage( WHand, WM_CLOSE, 0, 0) then
+    if PostMessage( WHand, WM_CLOSE, 0, 0)<> Null then
       Result := True;
     Application.ProcessMessages;
     end
