@@ -48,6 +48,8 @@
  *       Slovenian Version;
  *    Marco Kregar <mkregar@esys.it>
  *       Italian Version
+ *    Tsutomu Hayashi <hayashi@apex-jp.com>
+ *       Japanese Version
  *
  *    Thanks to Helen Borrie for adding the "legal part"
  *
@@ -99,6 +101,7 @@ Have Fun!
 //{$DEFINE DUTCH_VERSION}
 //{$DEFINE SLOVENIAN_VERSION}
 //{$DEFINE ITALIAN_VERSION}
+//{$DEFINE JAPANESE_VERSION}
 
 {$IFDEF CFLP}
   {$IFNDEF VERSAO_PORTUGUESA }
@@ -583,30 +586,30 @@ resourcestring
 
 {$IFDEF SLOVENIAN_VERSION}
    FB_Title        = 'Firebird upravitelj';
-   FB_Visit        = 'Obisci';
+   FB_Visit        = 'Spletna stran';
    FB_URL          = 'http://www.firebirdsql.org';
 
-   FB_LabStartMode = 'Nacin zagona';
+   FB_LabStartMode = 'Zagon';
    FB_LabStartModeA= 'Samodejno';
 
-   FB_LabStartModeM= 'Rocno';
+   FB_LabStartModeM= 'Manualno';
    FB_LabRootDir   = 'Imenik instalacije';
 
    FB_LabStatus    = 'Stanje';
-   FB_LabStatusS   = 'Trenutno stanje Firebird serverja';
+   FB_LabStatusS   = 'Trenutno stanje serverja';
 
    FB_LabStatusS_SR= 'Aktiven';
    FB_LabStatusS_SS= 'Zaustavljen';
 
    FB_LabStatusB_SS= 'Ustavi';
-   FB_LabStatusB_SR= 'Zazeni';
+   FB_LabStatusB_SR= 'Aktiviraj';
 
    FB_LabVersion   = 'Verzija';
 
-   FB_LabStatusServ= 'Zazeni kot servis NT/W2K/XP';
+   FB_LabStatusServ= 'Zagon s servisom NT/W2K/XP';
    FB_LabStatusGuar= 'Uporabi Guardian';
 
-   FB_LabStatusGOpt= 'Ohrani ponovni zagon Firebird Serverja';
+   FB_LabStatusGOpt= 'Ponovni zagon serverja';
 
    FB_NotInstalled = 'Ne najdem instalacije Firebird Serverja!';
 
@@ -645,6 +648,36 @@ resourcestring
   FB_Reboot       = 'Riavvio Automatico';
 {$ENDIF}
 
+{$IFDEF JAPANESE_VERSION}
+  FB_Title        = 'Firebird Manager';
+  FB_Visit        = 'Visit';
+  FB_URL          = 'http://www.firebirdsql.org';
+
+  FB_LabStartMode = 'Startup &Mode';
+  FB_LabStartModeA= '自動(&A)';
+  FB_LabStartModeM= '手動(&M)';
+
+  FB_LabRootDir   = 'ルート ディレクトリ(&D)';
+
+  FB_LabStatus    = 'ステータス(&T)';
+  FB_LabStatusS   = 'Firebird Server は現在 ';
+
+  FB_LabStatusS_SR= '起動中';
+  FB_LabStatusS_SS= '停止中';
+
+  FB_LabStatusB_SS= 'ストップ(&S)';
+  FB_LabStatusB_SR= 'スタート(&S)';
+
+  FB_LabVersion   = 'Version';
+
+  FB_LabStatusServ= 'NT/W2K/XP上でサービスとして起動(&R)';
+  FB_LabStatusGuar= 'Guardianを使用(&U)';
+  FB_LabStatusGOpt= 'Firebirdを再起動し続ける(&K)';
+  FB_NotInstalled = 'Firebirdサーバーがインストールされていません!';
+
+  FB_Apply        = '適用';
+  FB_Reboot       = 'Automatic Reboot';
+{$ENDIF}
 
 // ******************************************************
 
