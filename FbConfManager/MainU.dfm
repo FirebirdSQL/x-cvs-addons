@@ -52,14 +52,6 @@ object MainForm: TMainForm
         Align = alClient
         BevelInner = bvLowered
         TabOrder = 1
-        object LbVersion: TLabel
-          Left = 114
-          Top = 6
-          Width = 47
-          Height = 13
-          Alignment = taCenter
-          Caption = 'LbVersion'
-        end
       end
     end
     object PanVisit: TPanel
@@ -247,12 +239,20 @@ object MainForm: TMainForm
       TabOrder = 1
       object LbConfFile: TLabel
         Left = 16
-        Top = 14
+        Top = 22
         Width = 401
         Height = 13
         Alignment = taCenter
         AutoSize = False
         Caption = 'LbConfFile'
+      end
+      object LbVersion: TLabel
+        Left = 192
+        Top = 6
+        Width = 47
+        Height = 13
+        Alignment = taCenter
+        Caption = 'LbVersion'
       end
     end
   end
