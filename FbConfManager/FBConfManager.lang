@@ -1,0 +1,249 @@
+[GENERAL]
+CurrentLanguage=ENGLISH
+
+[ENGLISH]
+FBConf_BReadConfig=Read configuration file
+FBConf_BWriteConfig=Save configuration file to disk
+FBConf_BLanguage=Change language
+FBConf_LItemValue=Modify the value here:
+FBConf_BCancelValue=Cancel
+FBConf_BSaveValue=Save
+FBConf_PModified=Don't forget to save!
+FBConf_FB_NotInstalled=Firebird Server is not installed on your computer!
+FBConf_LbVisit=Visit:
+
+#Theese are comments taken from CVS firebird.conf
+RootDirectory=Specify the root directory under which Firebird is installed ?????
+
+ExternalTablesDirs=External Table Paths/Directories\n\nDirectoryList (';' separated), where files for external tables are stored. Relative paths are treated relative to RootDirectory entry (see above).\nNOTE: THE EXTERNAL TABLE ENGINE FEATURE COULD BE USED TO COMPROMISE THE SERVER/HOST AS WELL AS DATABASE SECURITY!!\nIT IS STRONGLY RECOMMENDED THAT THIS SETTING BE USED TO LIMIT EXTERNAL TABLE LOCATIONS!\nRecomended Value: External
+
+DefaultDbCachePages=Number of cached database pages\n\nThis sets the number of pages from any one database that can be held in cache at once. If you increase this value, the engine will allocate more pages to the cache for every database. By default, the SuperServer allocates 2048 pages for each database and the classic allocates 75 pages per client connection per database.
+
+SortMemBlockSize=In-memory sorting module\n\nFor Classic servers, these settings are defaulted to 0 (disabled) although they can be set, the values would apply to each client connection/server instance and thus consume a lot of memory.\n\nThe amount of memory allocated for each sort block.
+SortMemUpperLimit=The maximum amount of memory to be allocated by the in-memory sorting module.
+
+OldParameterOrdering=Backward-compatible parameter ordering as it was in FB v1/IB
+
+CompleteBooleanEvaluation=Boolean evaluation method (complete or shortcut)\n\nIf your SQL code depends on side-effects of full evaluation of OR and AND statements (right-hand-side terms), even if the expressions final result could be determined by just examining the value of the first term, you might need to turn this on.
+
+DeadlockTimeout=Determines the number of seconds that the lock manager will wait after a conflict has been encountered before deciding that there is a potential deadlock.
+
+EventMemSize=Bytes of shared memory allocated for event manager. In classic, this space is created for each connection. In SuperServer, there is one space shared by all clients
+
+MaxUnflushedWrites=How often the pages are flushed on disk (for databases with ForcedWrites=Off only)\n\nNumber of unflushed writes which will accumulate before they are flushed, at the next transaction commit.  For non-Win32 ports, the default value is -1 (Disabled)
+MaxUnflushedWriteTime=Number of seconds during which unflushed writes will accumulate before they are flushed, at the next transaction commit. For non-Win32 ports, the default value is -1 (Disabled)
+
+ConnectionTimeout=Client Connection Settings (Basic)\n\nSeconds to wait before concluding an attempt to connect has failed.
+DummyPacketInterval=Seconds to wait on a silent client connection before the server sends dummy packets to request acknowledgment.
+
+RemoteServiceName=TCP Protocol Settings\n\nThe TCP Service name/Port number to be used for client database connections.\n\nIt is only necessary to change one of the entries, not both. The order of precendence is the 'RemoteServiceName' (if an entry is found in the 'services.' file) then the 'RemoteServicePort'.
+RemoteServicePort=TCP Protocol Settings\n\nThe TCP Service name/Port number to be used for client database connections.\n\nIt is only necessary to change one of the entries, not both. The order of precendence is the 'RemoteServiceName' (if an entry is found in the 'services.' file) then the 'RemoteServicePort'.
+RemoteAuxPort=The TCP Port Number to be used for server Event Notification messages.  The value of 0 (Zero) means that the server will choose a port number randomly.
+TcpRemoteBufferSize=TCP/IP buffer size for send and receive buffers of both the client and server. The engine reads ahead of the client and can send several rows of data in a single packet. The larger the packet size, the more data is sent per transfer. Range is 1448 to 32768.
+TcpNoNagle=Either enables or disables Nagle algorithm (TCP_NODELAY option of socket) of the socket connection.\n\nNote: Currently this is only active for super server, classic server needs an extra wrapper program.
+RemoteBindAddress=Allows to bind the server to only one IP address. It allows the server to reject connections which come from other network interfaces. By default, connections from any available network interface are allowed.
+
+LockMemSize=Locking and shared memory parameters\n\nBytes of shared memory allocated for lock manager. In Classic mode, the size given is used for the initial allocation. The table expands dynamically up to the limit of memory. In SuperServer, the initial size is also the final size. Default is 96K on Linux and Solaris, 256K on Windows.
+LockSemCount=Number of semaphores for interprocess communication. In non-threading environments, this sets the number of semaphores available.
+LockGrantOrder=When a connection wants to lock an object, it gets a lock request block which specifies the object and the lock level requested. Each locked object has a lock block. Request blocks are connected to those lock blocks either as requests that have been granted, or as pending requests.\n\nThe settings:\n        1 means locks are granted first come, first served.\n        0 means emulate InterBase v3.3 behavior, where locks are granted\n        as soon as they are available; can result in lock request\n        starvation.
+LockRequireSpins=In Classic, only one client process may access the lock table at any time. Access to the lock table is governed by a mutex. The mutex can be requested conditionally -a wait is a failure and the request must be retried - or unconditionally - the request will wait until it is satisfied. This parameter establishes the number of attempts that will be made conditionally. Relevant only on SMP machines.
+LockHashSlots=Tune lock hash list; more hash slots mean shorter hash chains. Only necessary under very high load. Prime number values are recommended.
+
+CpuAffinityMask=SuperServer Engine Settings\n\nWhich CPUs should be used (Windows Only)\n\nIn an SMP system, sets which processors can be used by the server. The value is taken from a bit map in which each bit represents a CPU. Thus, to use only the first processor, the value is 1. To use both CPU 1 and CPU 2, the value is 3. To use CPU 2 and CPU 3, the value is 6. The default value is 1.
+
+PrioritySwitchDelay=Settings for the thread scheduler (Windows Only)\n\nThe wait time, in milli-seconds (ms), before the priority of:\n    - an inactive thread is reduced to 'Low', or\n    - an active thread is increased to 'High'\nNote: The default value was chosen based on experiments on Intel PIII/P4 processors.  It should be increased for using in the computer with lower speed processors.
+
+DeadThreadsCollection=Number of cycles of the scheduler (PrioritySwitchDelay ms) before thread are destroyed/closed.  Rather than immediately destroy/closed worker threads (which would require a semaphore and blocking call -- significant overhead), the thread scheduler maintains a pool of the threads.  When a thread has completed it's task/work, it is marked as idle.  The idle thread is destroyed/closed after X iterations of the scheduler loop.\n\nFor a server with a very large number of connections (presumably more than several hundred) the setting value should be increased.\n\nThe setting represents the number of loop iterations to be made before the thread is destroyed/closed.
+
+PriorityBoost=Number of additional 'intervals' given to a 'High' priority thread.
+
+GuardianOption=Settings for Windows platforms\n\nDoes the guardian restart the server every time it crashes?\n     0 - only start the engine/service once\n     1 - always restart the engine/service if it terminates
+
+ProcessPriorityLevel=Priority level/class for the server process.\n\nThe values are:\n    0 (Zero) - normal priority,\n    positive value - high priority (same as -B command line option)\n    negative value - low priority.\n\nNote: All changes to this value should be carefully tested to ensure that engine is more responsive to requests.
+
+IpcMapSize=Local Connection Settings\n\nSize in bytes of one client's portion of the memory mapped file used for local connections.
+IpcName=The Interface to be used for local connections\n   IPC = FirebirdIPI (Standard interface)\n   XNet = FirebirdXPI (New/faster interface)
+RemotePipeName=The name of the pipe used as a transport channel in NetBEUI protocol. Has the same meaning as a port number for TCP/IP. The default value is compatible with IB/FB1.
+
+CreateInternalWindow=Does the server need to create a (hidden) window (used for ????)
+
+LockSignal=Settings for Unix/Linux platforms\n\nUNIX signal to use for interprocess communication.
+
+RemoteFileOpenAbility=Allow opening of data files on NFS volumes\n\nAllows for database files which exists on a NFS mounted partition to be opened by the engine.\n\nThe original behavour was to try and connect to server on the remote machine via port 3050, this ensures that all opens of a file occur on the same machine and locking etc can be handled appropriately. However, this often causes frustration since often you end up in a position where you really do want db files to be opened by the local process even though it resides on a NFS share.  So this option allows for this 'feature' to be turned off.
+
+[ROMANIAN]
+FBConf_BReadConfig=Incarca fisierul de configurare
+FBConf_BWriteConfig=Salveaza modificarile aduse
+FBConf_BLanguage=Schimba limba
+FBConf_LItemValue=Modificati noua valoare aici:
+FBConf_BCancelValue=Anuleaza
+FBConf_BSaveValue=Salveaza
+FBConf_PModified=Nu uitati sa salvati!
+FBConf_FB_NotInstalled=Serverul Firebird nu este instalat pe acest calculator!
+FBConf_LbVisit=Vizitati:
+
+
+#Theese are comments taken from CVS firebird.conf
+RootDirectory=Aceasta este calea unde a fost instalat Serverul Firebird.
+RootDirectory=Specify the root directory under which Firebird is installed ?????
+
+ExternalTablesDirs=Caile/directoarele pentru Tabele Externe\n\nLista de directoare (separate cu ';'), unde fisierele tabelelor externe sunt stocate. Caile relative sunt considerate ca pornind din parametrul RootDirectory (vezi mai sus).\nNOTA: TABELELE EXTERNE POT FI FOLOSITE PENTRU A COMPROMITE SECURITATEA SERVERULUI CAT SI A BAZEI DE DATE!!!\nSe recomanda folosirea acestui parametru pentru a limita locul unde astfel de tabele pot fi create!\n\nValoare recomandata: Extern
+ExternalTablesDirs=External Table Paths/Directories\n\nDirectoryList (';' separated), where files for external tables are stored. Relative paths are treated relative to RootDirectory entry (see above).\nNOTE: THE EXTERNAL TABLE ENGINE FEATURE COULD BE USED TO COMPROMISE THE SERVER/HOST AS WELL AS DATABASE SECURITY!!\nIT IS STRONGLY RECOMMENDED THAT THIS SETTING BE USED TO LIMIT EXTERNAL TABLE LOCATIONS!\nRecomended Value: External
+
+DefaultDbCachePages=Numarul de pagini pastrate in cache\n\nAcesta este numarul maxim de pagini pe care orice baza de date poate sa o pastreze in memoria cache in orice moment. Daca mariti aceasta valoare, serverul va aloca mai multe pagini in cache pentru fiecare baza de date. Implicit SuperServerul aloca 2048 pagini pentru fiecare baza de date, iar Classicul aloca 75 pagini pentru fiecare client al fiecarei baze de date.
+DefaultDbCachePages=Number of cached database pages\n\nThis sets the number of pages from any one database that can be held in cache at once. If you increase this value, the engine will allocate more pages to the cache for every database. By default, the SuperServer allocates 2048 pages for each database and the classic allocates 75 pages per client connection per database.
+
+SortMemBlockSize=Modulul de ordonare in memorie\n\nPentru serverul Classic, aceste setari sunt implicit pe 0 chiar daca ar putea fi setate, valorile s-ar aplica fiecarei instante client(conexiune)/server si ar consuma foarte multa memorie.\n\nCantitatea de memorie alocata fiecarui bloc de ordonare.
+SortMemBlockSize=In-memory sorting module\n\nFor Classic servers, these settings are defaulted to 0 (disabled) although they can be set, the values would apply to each client connection/server instance and thus consume a lot of memory.\n\nThe amount of memory allocated for each sort block.
+SortMemUpperLimit=Modulul de ordonare in memorie\n\nPentru serverul Classic, aceste setari sunt implicit pe 0 chiar daca ar putea fi setate, valorile s-ar aplica fiecarei instante client(conexiune)/server si ar consuma foarte multa memorie.\n\nCantitatea maxima de memorie ce poate fi alocata modulului de ordonare.
+SortMemUpperLimit=The maximum amount of memory to be allocated by the in-memory sorting module.
+
+OldParameterOrdering=Parametru de compatibilitate cu Firebird 1/Interbase.\n\nOrdoneaza parametrii ca in versiunile anterioare.
+OldParameterOrdering=Backward-compatible parameter ordering as it was in FB v1/IB
+
+CompleteBooleanEvaluation=Metoda de evaluare booleana(completa sau scurta)\n\nDaca codul tau SQL depinde de efectele secundare a evaluarii tuturor conditiilor existente (termenii din partea dreapta), chiar daca rezultatul se cunoaste dupa evaluarea primului termen, atunci s-ar putea sa ai nevoie sa activezi acest parametru.
+CompleteBooleanEvaluation=Boolean evaluation method (complete or shortcut)\n\nIf your SQL code depends on side-effects of full evaluation of OR and AND statements (right-hand-side terms), even if the expressions final result could be determined by just examining the value of the first term, you might need to turn this on.
+
+DeadlockTimeout=Determina numarul de secunde pe care "lock manager"ul il va astepta in momentul aparitiei unui conflict inainte de a decide ca e un potential blocaj permanent.
+DeadlockTimeout=Determines the number of seconds that the lock manager will wait after a conflict has been encountered before deciding that there is a potential deadlock.
+
+EventMemSize=Numarul de bytes di memoria comuna alocati managerului de evenimente.\n\nIn Classic acest spatiu este creat pentru fiecare conexiune.\n\nIn SuperServer exista un singur spatiu comun tuturor clientilor.
+EventMemSize=Bytes of shared memory allocated for event manager. In classic, this space is created for each connection. In SuperServer, there is one space shared by all clients
+
+MaxUnflushedWrites=Cat de des sunt paginile de memorie salvate pe disc (doar in cazul ForcedWrites=Off)\n\nNumarul de pagini nesalvate ce se vor acumula inainte de a fi salvate, la urmatorul commit al tranzactiei. Pentru vensiunile non-Windows, valoarea implicita este -1(dezactivat).
+MaxUnflushedWrites=How often the pages are flushed on disk (for databases with ForcedWrites=Off only)\n\nNumber of unflushed writes which will accumulate before they are flushed, at the next transaction commit.  For non-Win32 ports, the default value is -1 (Disabled)
+MaxUnflushedWriteTime=Numarul de secunde in care paginile nesalvate se vor acumula inainte de incheierea tranzactiei. Pentru vensiunile non-Windows, valoarea implicita este -1(dezactivat).
+MaxUnflushedWriteTime=Number of seconds during which unflushed writes will accumulate before they are flushed, at the next transaction commit. For non-Win32 ports, the default value is -1 (Disabled)
+
+ConnectionTimeout=Setari conexiune client (de baza)\n\nNumarul de secunde pe care il va astepta inainte de a conclude ca o conexiune a esuat.
+ConnectionTimeout=Client Connection Settings (Basic)\n\nSeconds to wait before concluding an attempt to connect has failed.
+DummyPacketInterval=Setari conexiune client (de baza)\n\nNumarul de secundepe care il va asepta inainte de a trimite un pachet de proba unui client care nu face nimic.
+DummyPacketInterval=Seconds to wait on a silent client connection before the server sends dummy packets to request acknowledgment.
+
+RemoteServiceName=Setari pentru protocolul TCP\n\nNumele serviciului/Numarul de port TCP folosit pentru conexiunile clientului.\n\nEste necesar sa schimbati doar unul din parametrii nu amandoi. Ordinea de precedenta este 'RemoteServiceName' (daca exista definit in lista de servicii) apoi 'RemoteServicePort'.
+RemoteServiceName=TCP Protocol Settings\n\nThe TCP Service name/Port number to be used for client database connections.\n\nIt is only necessary to change one of the entries, not both. The order of precendence is the 'RemoteServiceName' (if an entry is found in the 'services.' file) then the 'RemoteServicePort'.
+RemoteServicePort=Setari pentru protocolul TCP\n\nNumele serviciului/Numarul de port TCP folosit pentru conexiunile clientului.\n\nEste necesar sa schimbati doar unul din parametrii nu amandoi. Ordinea de precedenta este 'RemoteServiceName' (daca exista definit in lista de servicii) apoi 'RemoteServicePort'.
+RemoteServicePort=TCP Protocol Settings\n\nThe TCP Service name/Port number to be used for client database connections.\n\nIt is only necessary to change one of the entries, not both. The order of precendence is the 'RemoteServiceName' (if an entry is found in the 'services.' file) then the 'RemoteServicePort'.
+RemoteAuxPort=Setari pentru protocolul TCP\n\nNumarul portului ce va fi folosit pentru mesajele de notificare (Events). Valoarea 0 inseamna ca un numar la intamplare va fi ales pentru fiecare conexiune.
+RemoteAuxPort=The TCP Port Number to be used for server Event Notification messages.  The value of 0 (Zero) means that the server will choose a port number randomly.
+TcpRemoteBufferSize=Setari pentru protocolul TCP\n\nDimensiunea bufferului TCP/IP pentru pachetele de trimitere si receptie atat pentru server cat si pentru client. Serverul citeste inainte si poate trimite mai multe randuri intr-un singur packet. Cu cat mai mare dimensiunea pachetului, cu atat mai multe date sunt trimise la un transfer. Valorile pot fi intre 1448 si 32768.
+TcpRemoteBufferSize=TCP/IP buffer size for send and receive buffers of both the client and server. The engine reads ahead of the client and can send several rows of data in a single packet. The larger the packet size, the more data is sent per transfer. Range is 1448 to 32768.
+TcpNoNagle=Setari pentru protocolul TCP\n\nActiveaza sau dezactiveaza algoritmul Nagle (optiunea TCP_NODELAY a unui socket) pentru conexiunile socket.\n\nNota: Momentan aceasta optiune este activa doar pentru SuperServer, serverul Classic are nevoie de un modul suplimentar.
+TcpNoNagle=Either enables or disables Nagle algorithm (TCP_NODELAY option of socket) of the socket connection.\n\nNote: Currently this is only active for super server, classic server needs an extra wrapper program.
+RemoteBindAddress=Setari pentru protocolul TCP\n\nPermite legarea serverului la o singura adresa IP. Ofera posibilitatea de a nu accepta conexiuni de la alte interfete de retea. Implicit se permit conexiuni pe orice interfata de retea.
+RemoteBindAddress=Allows to bind the server to only one IP address. It allows the server to reject connections which come from other network interfaces. By default, connections from any available network interface are allowed.
+
+LockMemSize=Parametrii pentru blocaje si memorie comuna\n\nNumarul de bytes de memorie comuna alocata managerului de blocaje. In modul Classic, valoarea este folosita pentru alocarea initiala. Tabela extinzandu-se dinamic pana la limita memoriei. In cazul SuperServerului, valoarea initiala este si cea finala. Implicit este 96K pentru Linux si Solaris, si 256K pentru Windows.
+LockMemSize=Locking and shared memory parameters\n\nBytes of shared memory allocated for lock manager. In Classic mode, the size given is used for the initial allocation. The table expands dynamically up to the limit of memory. In SuperServer, the initial size is also the final size. Default is 96K on Linux and Solaris, 256K on Windows.
+LockSemCount=Parametrii pentru blocaje si memorie comuna\n\nNumarul de semafoare pentru comunicarea intre procese. In cazul mediului fara thread-uri, valoarea reprezinta numarul de semafoare disponibile.
+LockSemCount=Number of semaphores for interprocess communication. In non-threading environments, this sets the number of semaphores available.
+LockGrantOrder=Parametrii pentru blocaje si memorie comuna\n\nCand o conexiune vrea sa blocheze un obiect, primeste un bloc de cerere de blocaj care specifica obiectul si nivelul blocajului dorit. Fiecare obiect blocat are un bloc de blocaj. Blocurile de cerere sunt conectate la aceste blocuri fie ca cereri acceptate ori ca cereri in asteptare.\n\nSetarile:\n        1 blocajele sunt oferite primul venit, primul servit.\n        0 simuleaza comportamentul Interbase 3.3, unde blocajele sunt oferite imediat ce sunt disponibile; poate rezulta in imposibilitatea de a rezolva cereri de blocaj.
+LockGrantOrder=When a connection wants to lock an object, it gets a lock request block which specifies the object and the lock level requested. Each locked object has a lock block. Request blocks are connected to those lock blocks either as requests that have been granted, or as pending requests.\n\nThe settings:\n        1 means locks are granted first come, first served.\n        0 means emulate InterBase v3.3 behavior, where locks are granted\n        as soon as they are available; can result in lock request\n        starvation.
+LockRequireSpins=Parametrii pentru blocaje si memorie comuna\n\nIn Classic, un singur proces poate accesa tabela de blocaje la un moment dat. Accesul este guvernat de un mutex. Acest mutex poate fi cerut conditionat (o intarziere echivaleaza cu esuare si cererea trebuie facuta din nou) sau neconditionat (cererea asteapta pana este indeplinita. Acest parametru stabileste numarul de incercari conditionate. Util doar in cazul calculatoarelor SMP.
+LockRequireSpins=In Classic, only one client process may access the lock table at any time. Access to the lock table is governed by a mutex. The mutex can be requested conditionally -a wait is a failure and the request must be retried - or unconditionally - the request will wait until it is satisfied. This parameter establishes the number of attempts that will be made conditionally. Relevant only on SMP machines.
+LockHashSlots=Parametrii pentru blocaje si memorie comuna\n\nLista de chei pentru armonizarea blocajelor; mai multe locuri pentru chei inseamna lanturi de chei mai scurte. Este necesar doar in cazul supra incarcarii. Se recomanda numere prime.
+LockHashSlots=Tune lock hash list; more hash slots mean shorter hash chains. Only necessary under very high load. Prime number values are recommended.
+
+CpuAffinityMask=Setari pentru SuperServer\n\nCare procesor sa fie folosit (doar in Windows)\n\nIntr-un sistem SMP, seteaza care procesor sa fie folosit de catre server. Valoarea este utilizata in mod binar fiecare bit reprezentand un procesor. De exemplu valoarea 3 (adica 00000011 binar) va permite folosirea primului si celui de al doilea procesor. Iar valoarea 1 (00000001) va permite folosirea doar a primului procesor. Implicit este 1.
+CpuAffinityMask=SuperServer Engine Settings\n\nWhich CPUs should be used (Windows Only)\n\nIn an SMP system, sets which processors can be used by the server. The value is taken from a bit map in which each bit represents a CPU. Thus, to use only the first processor, the value is 1. To use both CPU 1 and CPU 2, the value is 3. To use CPU 2 and CPU 3, the value is 6. The default value is 1.
+
+PrioritySwitchDelay=Setari pentru programarea de thread-uri (doar Windows)\n\nTimpul de asteptare, in milisecunde (ms), inainte ca prioritatea:\n    - unui thread inactiv sa fie redusa la 'Low', sau\n    - a unui thread activ sa fie ridicata la 'High'\nNota: Valoarea implicita a fost aleasa dupa experimente facute pe procesoare PIII/P4. Ar trebui sa fie marita pentru procesoare mai lente.
+PrioritySwitchDelay=Settings for the thread scheduler (Windows Only)\n\nThe wait time, in milli-seconds (ms), before the priority of:\n    - an inactive thread is reduced to 'Low', or\n    - an active thread is increased to 'High'\nNote: The default value was chosen based on experiments on Intel PIII/P4 processors.  It should be increased for using in the computer with lower speed processors.
+
+DeadThreadsCollection=Numarul de cicluri a programatorului (PrioritySwitchDelay ms) inainte ca thread-urile sa fie distruse/inchise. In loc sa distruga/inchida imediat threadurile care lucreaza (lucru ce ar necesita un semafor si o cerere de blocaj - incetinire semnificativa), programatorul de thread-uri pastreaza o lista de thread-uri. Cand un thread si-a terminat treaba este notat ca liber. Threadul liber este sters doar dupa cele x parcurgeri a listei.\n\nPentru un server cu un foarte mare numar de conexiuni (mai de cateva sute) valoarea ar trebui marita.\n\nParametrul reprezinta numarul de parcurgeri a listei inainte ca un thread sa fie distrus/inchis.
+DeadThreadsCollection=Number of cycles of the scheduler (PrioritySwitchDelay ms) before thread are destroyed/closed.  Rather than immediately destroy/closed worker threads (which would require a semaphore and blocking call -- significant overhead), the thread scheduler maintains a pool of the threads.  When a thread has completed it's task/work, it is marked as idle.  The idle thread is destroyed/closed after X iterations of the scheduler loop.\n\nFor a server with a very large number of connections (presumably more than several hundred) the setting value should be increased.\n\nThe setting represents the number of loop iterations to be made before the thread is destroyed/closed.
+
+PriorityBoost=Numarul aditional de intervaluri oferit unui thread cu prioritate ridicata (High).
+PriorityBoost=Number of additional 'intervals' given to a 'High' priority thread.
+
+GuardianOption=Setari pentru Windows\n\nSa fie Serverul repornit de catre Gardian de fiecare data cand se opreste defectuos?\n     0 - o singura data\n     1 - de fiecare data.
+GuardianOption=Settings for Windows platforms\n\nDoes the guardian restart the server every time it crashes?\n     0 - only start the engine/service once\n     1 - always restart the engine/service if it terminates
+
+ProcessPriorityLevel=Clasa/nivelul de prioritate a procesului Serverului.\n\nValorile posibile sunt:\n    0 (Zero) - prioritate normala,\n    pozitive - prioritate ridicata (echivalent cu optiunea de comanda -B)\n    negative - prioritate scazuta.\n\nNota: Orice modificare a acestei valori trebuie testata cu grija pentru a se vedea daca Serverul raspunde sau nu mai bine cererilor.
+ProcessPriorityLevel=Priority level/class for the server process.\n\nThe values are:\n    0 (Zero) - normal priority,\n    positive value - high priority (same as -B command line option)\n    negative value - low priority.\n\nNote: All changes to this value should be carefully tested to ensure that engine is more responsive to requests.
+
+IpcMapSize=Setari pentru conexiunea locala\n\nDimensiunea in bytes a portiuni unui client din fisierul mapat in memorie folosit pentru conexiunea locala.
+IpcMapSize=Local Connection Settings\n\nSize in bytes of one client's portion of the memory mapped file used for local connections.
+IpcName=Setari pentru conexiunea locala\n\nInterfata folosita pentru conexiunile locale\n   IPC = FirebirdIPI (Interfata standard)\n   XNet = FirebirdXPI (Interfata noua/mai rapida)\n
+IpcName=The Interface to be used for local connections\n   IPC = FirebirdIPI (Standard interface)\n   XNet = FirebirdXPI (New/faster interface)
+RemotePipeName=Setari pentru conexiunea locala\n\nNumele conductei ce va fi folosita ca si canal de transport in protocolul NetBEUI. Are aceasi semnificatie ca si numarul de port in cazul TCP/IP. Valoarea implicita este compatibila cu IB/FB1.
+RemotePipeName=The name of the pipe used as a transport channel in NetBEUI protocol. Has the same meaning as a port number for TCP/IP. The default value is compatible with IB/FB1.
+
+CreateInternalWindow=Are nevoie serverul sa creeze o fereastra interna (ascunsa) (folosita la ce ???)\n\nNu este clar inca la ce se foloseste acest parametru.
+CreateInternalWindow=Does the server need to create a (hidden) window (used for ????)
+
+LockSignal=Setari pentru platformele Unix/Linux\n\nSemnalul UNIX ce va fi folosit pentru comunicarea intre procese.
+LockSignal=Settings for Unix/Linux platforms\n\nUNIX signal to use for interprocess communication.
+
+RemoteFileOpenAbility=Permite deschiderea bazelor de date de pe volume NFS\n\nComportamentul original era sa se conecteze prin portul 3050 la serverul care avea local baza de date, acest lucru asigurand ca acel fisier poate fi deschis doar de procesul local al Serverului permitand astfel ca blocajele sa fie manevrate in mod consistent. Dar, in unele cazuri acest lucru genereaza frustrare pentru ca exista cazuri in care vrei intentionat ca o baza de date sa fie pe un share NFS si totusi sa fie deschisa de Serverul local. Asa ca aceasta optiune permite acestei 'trasaturi' sa fie desactivata.
+
+[PORTUGUESE]
+FBConf_BReadConfig=Ler firebird.conf
+FBConf_BWriteConfig=Gravar firebird.conf
+FBConf_BLanguage=Escolher Linguagem
+FBConf_LItemValue=Modifique o valor aqui:
+FBConf_BCancelValue=Cancelar
+FBConf_BSaveValue=Gravar
+FBConf_PModified=Não se esqueça de gravar!
+FBConf_FB_NotInstalled=Firebird Server não está instalado no seu computador!
+FBConf_LbVisit=Visite:
+
+#Comentarios extraidos do Firebird.conf da CVS
+RootDirectory=Especifica a directoria raíz onde o Firebird está instalado ?????
+
+ExternalTablesDirs=Caminho/Directoria para as tabelas Externas\n\nListagem das Directorias (separadas por ';') onde são guardadas as tabelas externas. Caminhos relativos são tratados como relativos ao parâmetro 'RootDirectory' (ver acima).\n\nNOTA: O USO DE TABELAS EXTERNAS PODE SER UTILIZADO PARA COMPROMETER A SEGURANÇA DO SEU SERVIDOR/HOST ASSIM COMO DA SUAS BASES DE DADOS!!!\nÉ ALTAMENTE RECOMENDAVEL QUE ESTE PARÂMETRO SEJA UTILIZADO PARA LIMITAR A LOCALIZAÇÃO DAS SUAS TABELAS EXTERNAS!\n\nValor Recomendado: External
+
+DefaultDbCachePages=Numero de páginas da base de dados 'cached'\n\nEste parâmetro define o número de páginas de qualquer base de dados que pode ser mantida em "cache" de uma vez só. Se aumentar este valor o Firebird irá alocar mais páginas para "cache" de todas as bases de dados.\n\nPor defeito, o SuperServer aloca 2048 páginas para cada base de dados e o Classic aloca 75 páginas por cada conexão de cliente por base de dados.
+
+SortMemBlockSize=Módulo de Ordenação em Memória\n\nPara servidores Classicos, este parâmetro por defeito é 0 (desactivado) mas ao ser definido o valor irá ser aplicado a cada conexão cliente/instância do servidor, consumindo assim uma quantidade enorme de memória.\n\nEste parâmetro define a memória alocada por cada bloco de ordenação.
+SortMemUpperLimit=Define o limite máximo de memória a ser alocado pelo Módulo de Ordenação em memória.
+
+OldParameterOrdering=Parâmetro que permite a compatibilidade de ordenação com o Firebird v1 e Interbase.
+
+CompleteBooleanEvaluation=Método de Tratamento de Booleans (completo ou resumido)\n\nSe o seu código SQL depender nos efeitos de tratamento completo de declarações OR e AND ("right-hand-side terms"), mesmo que a expressão final possa ser determinada apenas pelo exame do primeiro termo, pode necessitar de tornar este parâmetro ON.
+
+DeadlockTimeout=Determina o número de segundos em que o gestor de locks espera depois de um conflito ser encontrado antes de decidir que existe um potencial "deadlock".
+
+EventMemSize=Numero de Bytes da memória partilhada alocada para o Gestor de Eventos ("event manager"). No Clássico, este espaço é criado para cada conexão. No SuperServer, apenas existe um espaço partilhado por todos os clientes.
+
+MaxUnflushedWrites=Periodicidade em que as páginas são descarregadas ("flushed") para o disco (para bases de dados com ForcedWrites=Off apenas)\n\nNumero de escritas "unflushed" que acumularão até serem "flushed", num próximo "commit" de uma transação. Para ambientes não-Win32, o valor por defeito é -1 (Desactivado)
+MaxUnflushedWriteTime=Número de segundos que as escritas "unflushed" acumularão antes de serem "flushed", no "commit" da transação. Para ambientes não-Win32, o valor por defeito é -1 (Desactivado)
+
+ConnectionTimeout=Parâmetro de Conexão de Cliente (Básicos)\n\nSegundos de espera antes de concluir que uma tentativa de conexão falhou.
+DummyPacketInterval=Segundos de espera numa conexão de cliente "silenciosa" antes do servidor enviar um pacote "dummy" para requerer um "acknowledgment".
+
+RemoteServiceName=Parâmetros do protocolo TCP\n\nDefine o nome do serviço/número da porta a ser utilizado nas conexões de clientes à base de dados.\n\nApenas é necessário alterar uma das entradas, não as duas. A ordem de precedência é 'RemoteServiceName' (se uma entrada for encontrada no ficheiro 'services.') e depois 'RemoteServicePort'.
+RemoteServicePort=Parâmetros do protocolo TCP\n\nDefine o nome do serviço/número da porta a ser utilizado nas conexões de clientes à base de dados.\n\nApenas é necessário alterar uma das entradas, não as duas. A ordem de precedÊncia é 'RemoteServiceName' (se uma entrada for encontrada no ficheiro 'services.') e depois 'RemoteServicePort'.
+RemoteAuxPort=A Porta TCP a ser utilizada pelo servidor para Notificação de Eventos.  O valor 0 (Zero) indica que o servidor irá escolher uma porta de forma aleatória (como no Fb 1/IB).
+TcpRemoteBufferSize=Tamanho do Buffer de TCP/IP para receber/enviar, tanto no cliente como no servidor. O Firebird lê em avanço do cliente e pode enviar diversas linhas de dados em um único pacote. Quanto maior o tamanho do pacote, mais dados podem ser enviados numa única transferência. Os valores podem estar compreendidos entre 1448 a 32768.
+TcpNoNagle=Activa ou desactiva o algoritmo Nagle (opção TCP_NODELAY para o socket) no socket da conexão.\n\nNota: actualmente este parâmetro apenas está activo para o SuperServer - o Clássico necessita de um programa extra.
+RemoteBindAddress=Permite que se faça 'bind' do servidor apenas para um endereço IP.\nFaz com que o servidor rejeite conexões noutros endereços de rede. Por defeito, são permitidas as conexões de todos os 'interfaces' de rede.
+
+LockMemSize=Parâmetros de Locking e de Memória Partilhada\n\nNúmero de Bytes de memória partilhada alocada para o Gestor de Locks. No Classico, o tamanho atribuido é usado pela alocação inicial. A tabela expande dinamicamente até atingir o limite de memória. No SuperServer, este tamanho inicial é também o tamanho final. Por defeito, tem um valor de 96K no Linux e Solaris, 256K no Windows.
+LockSemCount=Número de semáforos para a comunicação inter-processos. Em ambientes "non-threading", define o número de semáforos disponiveis.
+LockGrantOrder=Quando uma conexão pretende fazer lock de um objecto, recebe um "lock request block" que especifica o objecto e o nível do lock requerido. Cada objecto "locked" possui um "lock block". Os blocos requeridos são conectados a estes "lock blocks" como requesições que foram atribuidas, ou como requisições pendentes.\n\nOs valores:\n  1 indica que os "locks" são disponibilizados\n    'primeiro a chegar, primeiro servido.\n  0 indica emulação do InterBase v3.3, onde os\n   locks eram atríbuidos assim que estivessem\n    disponiveis; pode resultar em "starvation locks".
+LockRequireSpins=No Classico, apenas um processo cliente pode aceder à tabela de locks em qualquer altura. O aceso à tabela de locks é controlada por um mutex. O mutex pode ser obtido "conditionally" - um "wait" é uma "failure" e a requisição deve ser reinicializada - ou "unconditionally" - a requisção irá esperar até poder ser satisfeita. Este parâmetro estabelece o número de tentativas que serão efectuadas no modo "conditionally". Relevante apenas em máquinas SMP.
+LockHashSlots=Permite a afinação da "lock hash list"; mais "hash slots" indicam "hash chains" mais curtas. Apenas necessário em ambientes "high load". Números primos são recomendados.
+
+CpuAffinityMask=Parâmetro de SuperServer\n\nQue CPUs devem ser usados? (Apenas em Windows)\n\nNum sistema SMP, define que processador deve ser usado pelo Server. O valor é obtido de um mapa de bits em que cada bit representa um CPU. Assim, para usar o primeiro processador, o valor é 1. Para usar os CPU's 1 e 2, o valor é 3. Para usar o CPU 2 e 3, o valor é 6. O valor por defeito é 1.
+
+PrioritySwitchDelay=Parâmetro para o "thread scheduler" (apenas Windows)\n\nO tempo de espera ("wait time"), em mili-segundos (ms), antes da prioridade de:\n    - um "thread" incativo ser reduzida a Baixa('Low'), ou\n    - um "thread" activo ser aumentada para Alta ('High')\nNota: O valor por defeito foi escolhido tendo como base testes em processadores Intel PIII e P4. Deve ser aumentado para processadores mais lentos.
+
+DeadThreadsCollection=Numero de ciclos do "scheduler" (PrioritySwitchDelay ms) antes de um "thread" ser destruido/fechado. Em vez de destruir/fechar imediatamente um "thread" activo (que iria requerer um semaforo e uma chamada de blocking -- maior overhead), o "thread scheduler" mantém uma "pool" dos "threads". Quando um "thread" termina, é marcado como "idle".  Estes "idle thread"'s são destruidos/fechados depois de X iterações num loop do "scheduler".\n\nPara um servidor com uma quantidade grande de conexões (centenas) este valor deve ser aumentado.\n\nO parâmetro representa o número de iterações no loop a ser feitas antes do "thread" ser destruido/fechado.
+
+PriorityBoost=Numero de "intervalos" adicionais atribuidos a um thread de alta ('High') prioridade.
+
+GuardianOption=Para plataformas Windows\n\nO guardian irá reiniciar o servidor sempre que este crasha?\n     0 - reinicia apenas uma vez\n     1 - reinicia sempre que terminar
+
+ProcessPriorityLevel=Nível de Prioridade do processo do servidor.\n\nOs valores são:\n    0 (Zero) - prioridade normal,\n    valor positivo - prioridade 'high' (assim como a opção de comando -B)\n    valor negativo - prioridade 'low'.\n\nNota: Todas as alterações a este valor devem ser cuidadosamente testadas para certificar que o servidor tem uma resposta melhorada.
+
+IpcMapSize=Parâmetros de Conexões Locais\n\nTamanho em bytes de uma porção da "memory mapped file" do cliente usada nas conexões locais.
+IpcName=O Interface a ser utilizado nas conexões locais\n   IPC = FirebirdIPI (interface Standard)\n   XNet = FirebirdXPI (interface Novo/+Rápido)
+RemotePipeName=O nome do "pipe" usado como canal de transporte no protocolo NetBEUI. Tem o mesmo significado que um número de porta para TCP/IP. O valor por defeito é compativel com IB/FB1.
+
+CreateInternalWindow=É necessário ao server criar uma janela (hidden) (utilizada para ????)
+
+LockSignal=Parâmetros para plataformas Unix/Linux\n\nSinal UNIX para ser usado nas comunicações interprocessos.
+
+RemoteFileOpenAbility=Permite a abertura de ficheiros em volumes NFS\n\nPermite que bases de dados que existem num volume montado numa partição NFS serem abertos.\n\nO comportamento original era tentar conectar-se com o servidor via porta 3050, que assegurava que todos os pedidos de abertura de ficheiro sejam feitos pela mesma máquina e todos os locks, etc, possam ser manuseados correctamente. Porém, este método era muitas vezes frustante, pois existem casos em que se pretende que o ficheiro seja realmente aberto pelo processo local mesmo que ele resida num share NFS.  Assim, este parâmetro permite que esta "feature" seja desactivada.
+
